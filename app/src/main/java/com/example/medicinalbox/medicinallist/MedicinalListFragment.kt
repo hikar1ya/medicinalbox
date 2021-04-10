@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.medicinalbox.R
@@ -49,22 +50,21 @@ class MedicinalListFragment : Fragment() {
             )
         }
 
-//        viewModel.navigateToEdit.observe(viewLifecycleOwner, Observer { item ->
-//            if (item != null) {
-//                this.findNavController().navigate(
-//                    MedicinalListFragmentDirections.actionMedicinalListFragmentToEditMedicinalFragment(
-//                        item.id,
-//                        item.name,
-//                        item.dosage,
-//                        item.formOfIssue,
-//                        item.comment,
-//                        item.amount
-//                    )
-//                )
-//                viewModel.doneNavigating()
-//            }
-//        })
-//
+        viewModel.navigateToEdit.observe(viewLifecycleOwner, Observer { medicinal ->
+            if (medicinal != null) {
+                this.findNavController().navigate(
+                    MedicinalListFragmentDirections.actionMedicinalListFragmentToEditMedicinalFragment(
+                        medicinal.id,
+                        medicinal.name,
+                        medicinal.dosage,
+                        medicinal.formOfIssue,
+                        medicinal.comment,
+                        medicinal.amount
+                    )
+                )
+                viewModel.doneNavigating()
+            }
+        })
 
 //
 //        binding.button.setOnClickListener {

@@ -54,7 +54,7 @@ class EditMedicinalFragment : Fragment() {
                 viewModel.editMedicinal(
                     args.id,
                     binding.editName.text.toString(),
-                    binding.editName.text.toString(),
+                    binding.editDosage.text.toString(),
                     binding.editFormOfIssue.text.toString(),
                     binding.editAmount.text.toString().toInt(),
                     binding.editComment.text.toString()

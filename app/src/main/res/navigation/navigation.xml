@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_medicinalListFragment_to_addMedicinalFragment"
             app:destination="@id/addMedicinalFragment" />
+        <action
+            android:id="@+id/action_medicinalListFragment_to_editMedicinalFragment"
+            app:destination="@id/editMedicinalFragment" />
     </fragment>
     <fragment
         android:id="@+id/addMedicinalFragment"

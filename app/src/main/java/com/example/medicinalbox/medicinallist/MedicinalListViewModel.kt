@@ -16,21 +16,15 @@ class MedicinalListViewModel(val dao: MedicinalDatabaseDao,
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     var elements = dao.getMedicinals()
 
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
+    private val _navigateToEdit = MutableLiveData<Medicinal>()
+    val navigateToEdit: LiveData<Medicinal>
+        get() = _navigateToEdit
 
     fun onEditClicked(medicinal: Medicinal) {
         uiScope.launch {
             _navigateToEdit.value = medicinal
         }
     }
-
-
-    private val _navigateToEdit = MutableLiveData<Medicinal>()
-    val navigateToEdit: LiveData<Medicinal>
-        get() = _navigateToEdit
 
     fun doneNavigating() {
         _navigateToEdit.value = null
@@ -52,5 +46,10 @@ class MedicinalListViewModel(val dao: MedicinalDatabaseDao,
         } else {
             elements = dao.filter(charText)
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

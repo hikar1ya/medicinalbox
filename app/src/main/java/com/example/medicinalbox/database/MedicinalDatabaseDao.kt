@@ -10,19 +10,19 @@ interface MedicinalDatabaseDao {
     fun insertMedicinal(medicinal: Medicinal)
 
     @Update
-    fun updateMedicinal(medicinal : Medicinal)
+    fun updateMedicinal(medicinal: Medicinal)
 
     @Delete
     fun deleteMedicinal(medicinal: Medicinal)
 
     @Insert
-    fun insertGroup(group: Group)
+    fun insertCustomList(group: CustomList)
 
     @Update
-    fun updateGroup(group: Group)
+    fun updateCustomList(group: CustomList)
 
     @Delete
-    fun deleteGroup(group: Group)
+    fun deleteCustomList(group: CustomList)
 
     @Query("SELECT * FROM medicinal_table WHERE id = :key")
     fun getMedicinalById(key: Long): Medicinal?
@@ -33,28 +33,28 @@ interface MedicinalDatabaseDao {
     @Query("SELECT * FROM medicinal_table ORDER BY id DESC")
     fun getMedicinals(): LiveData<List<Medicinal>>
 
-    @Query("SELECT * FROM group_table ORDER BY id DESC")
-    fun getGroups(): LiveData<List<Group>>
+    @Query("SELECT * FROM custom_list_table ORDER BY id DESC")
+    fun getCustomLists(): LiveData<List<CustomList>>
 
-    /*@Query("SELECT name FROM group_table WHERE id = :key LIMIT 1")
-    fun getGroupById(key: Long)*/
+    /*@Query("SELECT name FROM custom_list_table WHERE id = :key LIMIT 1")
+    fun getCustomListById(key: Long)*/
 
-    @Query("SELECT id FROM group_table ORDER BY id DESC LIMIT 1")
-    fun getLastGroup(): Long
+    @Query("SELECT id FROM custom_list_table ORDER BY id DESC LIMIT 1")
+    fun getLastCustomList(): Long
 
-    @Query("INSERT INTO group_medicinal_connection_table (id_group, id_medicinal) VALUES (:id, :medicinal_id)")
-    fun addMedicinalToGroup(medicinal_id: Long, id: Long)
+    @Query("INSERT INTO custom_list_medicinal_connection_table (custom_list_id, medicinal_id) VALUES (:id, :medicinal_id)")
+    fun addMedicinalToCustomList(medicinal_id: Long, id: Long)
 
-    @Query("DELETE FROM group_table WHERE id = :key")
-    fun deleteGroupById(key: Long)
+    @Query("DELETE FROM custom_list_table WHERE id = :key")
+    fun deleteCustomListById(key: Long)
 
-    @Query("DELETE FROM group_medicinal_connection_table WHERE id_group = :key")
+    @Query("DELETE FROM custom_list_medicinal_connection_table WHERE custom_list_id = :key")
     fun deleteConnectionsById(key: Long)
 
     @Query("SELECT * FROM medicinal_table WHERE name LIKE '%' + :search + '%'")
-    fun filter(search: String) : LiveData<List<Medicinal>>
+    fun filter(search: String): LiveData<List<Medicinal>>
 
-    @Query("SELECT * FROM group_medicinal_connection_table JOIN medicinal_table ON group_medicinal_connection_table.id_medicinal = medicinal_table.id WHERE group_medicinal_connection_table.id_group = :key")
-    fun getMedicinalsByGroup(key: Long) : LiveData<List<Medicinal>>
+    @Query("SELECT * FROM custom_list_medicinal_connection_table JOIN medicinal_table ON custom_list_medicinal_connection_table.medicinal_id = medicinal_table.id WHERE custom_list_medicinal_connection_table.custom_list_id = :key")
+    fun getMedicinalsByCustomList(key: Long): LiveData<List<Medicinal>>
 
 }

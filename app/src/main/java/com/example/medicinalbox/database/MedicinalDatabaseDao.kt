@@ -27,17 +27,14 @@ interface MedicinalDatabaseDao {
     @Query("SELECT * FROM medicinal_table WHERE id = :key")
     fun getMedicinalById(key: Long): Medicinal?
 
-    @Query("DELETE FROM medicinal_table")
-    fun clear()
-
     @Query("SELECT * FROM medicinal_table ORDER BY id DESC")
     fun getMedicinals(): LiveData<List<Medicinal>>
 
     @Query("SELECT * FROM custom_list_table ORDER BY id DESC")
     fun getCustomLists(): LiveData<List<CustomList>>
 
-    /*@Query("SELECT name FROM custom_list_table WHERE id = :key LIMIT 1")
-    fun getCustomListById(key: Long)*/
+    @Query("SELECT * FROM custom_list_table WHERE id = :key LIMIT 1")
+    fun getCustomListById(key: Long): LiveData<CustomList>
 
     @Query("SELECT id FROM custom_list_table ORDER BY id DESC LIMIT 1")
     fun getLastCustomList(): Long
@@ -55,6 +52,6 @@ interface MedicinalDatabaseDao {
     fun filter(search: String): LiveData<List<Medicinal>>
 
     @Query("SELECT * FROM custom_list_medicinal_connection_table JOIN medicinal_table ON custom_list_medicinal_connection_table.medicinal_id = medicinal_table.id WHERE custom_list_medicinal_connection_table.custom_list_id = :key")
-    fun getMedicinalsByCustomList(key: Long): LiveData<List<Medicinal>>
+    fun getMedicinalsByCustomListId(key: Long): LiveData<List<Medicinal>>
 
 }

@@ -48,7 +48,7 @@ class AddCustomListFragment : Fragment() {
         })
 
         binding.saveButton.setOnClickListener {
-            viewModel.saveCustomList(binding.nameOfGroup.text.toString())
+            viewModel.saveCustomList(binding.nameOfList.text.toString())
             this.findNavController().navigateUp()
         }
 

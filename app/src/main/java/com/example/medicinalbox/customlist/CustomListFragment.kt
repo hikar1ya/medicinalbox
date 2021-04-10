@@ -49,12 +49,17 @@ class CustomListFragment : Fragment() {
             }
         })
 
-//        viewModel.navigateToList.observe(viewLifecycleOwner, Observer { item ->
-//            if (item != null) {
-//                this.findNavController().navigate(GroupFragmentDirections.actionGroupFragmentToListFragment(item.id, item.name))
-//                viewModel.doneNavigating()
-//            }
-//        })
+        viewModel.navigateToCustomListInfo.observe(viewLifecycleOwner, Observer { item ->
+            if (item != null) {
+                this.findNavController().navigate(
+                    CustomListFragmentDirections.actionCustomListFragmentToCustomListInfoFragment(
+                        item.id,
+                        item.name
+                    )
+                )
+                viewModel.doneNavigating()
+            }
+        })
 
         binding.addCustomListButton.setOnClickListener {
             this.findNavController().navigate(

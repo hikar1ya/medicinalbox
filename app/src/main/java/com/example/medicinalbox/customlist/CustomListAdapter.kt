@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.medicinalbox.R
@@ -11,6 +12,7 @@ import com.example.medicinalbox.database.CustomList
 
 class ElementViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val elName: TextView = itemView.findViewById(R.id.name)
+    val item: LinearLayout = itemView.findViewById(R.id.itemCustomList)
 //    val editBtn: ImageView = itemView.findViewById(R.id.edit_button)
 //    val deleteBtn: ImageView = itemView.findViewById(R.id.delete_button)
 }
@@ -28,6 +30,9 @@ class CustomListAdapter() : RecyclerView.Adapter<ElementViewHolder>() {
     override fun onBindViewHolder(holder: ElementViewHolder, position: Int) {
         val item = data[position]
         holder.elName.text = "${item.name}"
+        holder.item.setOnClickListener {
+            viewModel.onCustomListClicked(item)
+        }
 //        holder.editBtn.setOnClickListener {
 //            viewModel.onGroupClicked(item)
 //        }

@@ -56,12 +56,12 @@ class CustomListFragment : Fragment() {
 //            }
 //        })
 
-//        binding.addCustomListButton.setOnClickListener {
-//            this.findNavController().navigate(
-//                GroupFragmentDirections.actionGroupFragmentToChooseMedicinalsFragment())
-//            Toast.makeText(requireActivity(), "Данные неполны", Toast.LENGTH_SHORT).show()
-//        }
-
+        binding.addCustomListButton.setOnClickListener {
+            this.findNavController().navigate(
+                CustomListFragmentDirections.actionCustomListFragmentToAddCustomListFragment()
+            )
+            Toast.makeText(requireActivity(), "Данные неполны", Toast.LENGTH_SHORT).show()
+        }
         return binding.root
 
     }

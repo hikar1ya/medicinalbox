@@ -5,4 +5,5 @@
     <string name="add_medicinal">Add Medicinal</string>
     <string name="medicinal_list">Medicinal List</string>
     <string name="custom_list">Custom List</string>
+    <string name="save">Save</string>
 </resources>

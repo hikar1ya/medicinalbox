@@ -50,5 +50,14 @@
         android:id="@+id/customListFragment"
         android:name="com.example.medicinalbox.customlist.CustomListFragment"
         android:label="@string/custom_list"
-        tools:layout="@layout/custom_list_fragment"/>
+        tools:layout="@layout/custom_list_fragment">
+        <action
+            android:id="@+id/action_customListFragment_to_addCustomListFragment"
+            app:destination="@id/addCustomListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCustomListFragment"
+        android:name="com.example.medicinalbox.addcustomlist.AddCustomListFragment"
+        android:label="AddCustomListFragment"
+        tools:layout="@layout/add_custom_list_fragment"/>
 </navigation>

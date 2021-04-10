@@ -66,12 +66,6 @@ class MedicinalListFragment : Fragment() {
             }
         })
 
-//        binding.button.setOnClickListener {
-//            this.findNavController().navigate(
-//                MedicinalListFragmentDirections.actionMedicinalListFragmentToGroupFragment()
-//            )
-//        }
-
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
@@ -84,7 +78,6 @@ class MedicinalListFragment : Fragment() {
                 return true
             }
         })
-
 
         return binding.root
     }

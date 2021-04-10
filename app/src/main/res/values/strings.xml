@@ -4,4 +4,5 @@
     <string name="edit_medicinal">Edit Medicinal</string>
     <string name="add_medicinal">Add Medicinal</string>
     <string name="medicinal_list">Medicinal List</string>
+    <string name="custom_list">Custom List</string>
 </resources>

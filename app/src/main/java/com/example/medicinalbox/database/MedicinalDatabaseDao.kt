@@ -49,7 +49,7 @@ interface MedicinalDatabaseDao {
     fun deleteCustomListById(key: Long)
 
     @Query("DELETE FROM custom_list_medicinal_connection_table WHERE custom_list_id = :key")
-    fun deleteConnectionsById(key: Long)
+    fun deleteConnectionsByCustomListId(key: Long)
 
     @Query("SELECT * FROM medicinal_table WHERE name LIKE '%' + :search + '%'")
     fun filter(search: String): LiveData<List<Medicinal>>

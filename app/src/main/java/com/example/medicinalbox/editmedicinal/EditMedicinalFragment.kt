@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.medicinalbox.R
 import com.example.medicinalbox.database.MedicinalDatabase
@@ -37,18 +38,26 @@ class EditMedicinalFragment : Fragment() {
             false
         )
 
+        val args = EditMedicinalFragmentArgs.fromBundle(requireArguments())
+
         val application = requireNotNull(this.activity).application
         val dao = MedicinalDatabase.getInstance(application).getMedicinalDatabaseDao()
-        val viewModelFactory = EditMedicinalViewModelFactory(dao, application)
+        val viewModelFactory = EditMedicinalViewModelFactory(args.id, dao)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(EditMedicinalViewModel::class.java)
 
-        val args = EditMedicinalFragmentArgs.fromBundle(requireArguments())
-        binding.editDosage.setText(args.dosage)
-        binding.editName.setText(args.name)
-        binding.editAmount.setText(args.amount.toString())
-        binding.editFormOfIssue.setText(args.formOfIssue)
-        binding.editComment.setText(args.comment)
+        viewModel.medicinal.observe(viewLifecycleOwner, Observer { medicinal ->
+            if (medicinal != null) {
+                binding.run {
+                    editDosage.setText(medicinal.dosage)
+                    editName.setText(medicinal.name)
+                    editAmount.setText(medicinal.amount.toString())
+                    editFormOfIssue.setText(medicinal.formOfIssue)
+                    editComment.setText(medicinal.comment)
+                }
+            }
+        })
+
         binding.sendButton.setOnClickListener {
             if (checkData()) {
                 viewModel.editMedicinal(

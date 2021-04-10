@@ -53,9 +53,7 @@ class CustomListFragment : Fragment() {
             if (item != null) {
                 this.findNavController().navigate(
                     CustomListFragmentDirections.actionCustomListFragmentToCustomListInfoFragment(
-                        item.id,
-                        item.name
-                    )
+                        item.id)
                 )
                 viewModel.doneNavigating()
             }

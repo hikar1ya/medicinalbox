@@ -27,6 +27,9 @@ interface MedicinalDatabaseDao {
     @Query("SELECT * FROM medicinal_table WHERE id = :key")
     fun getMedicinalById(key: Long): Medicinal?
 
+    @Query("SELECT * FROM medicinal_table WHERE id = :key")
+    fun getMedicinalByIdLD(key: Long): LiveData<Medicinal>
+
     @Query("SELECT * FROM medicinal_table ORDER BY id DESC")
     fun getMedicinals(): LiveData<List<Medicinal>>
 

@@ -30,21 +30,6 @@
         <argument
             android:name="id"
             app:argType="long" />
-        <argument
-            android:name="name"
-            app:argType="string" />
-        <argument
-            android:name="dosage"
-            app:argType="string" />
-        <argument
-            android:name="form_of_issue"
-            app:argType="string" />
-        <argument
-            android:name="comment"
-            app:argType="string" />
-        <argument
-            android:name="amount"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/customListFragment"
@@ -72,8 +57,5 @@
         <argument
             android:name="id"
             app:argType="long" />
-        <argument
-            android:name="name"
-            app:argType="string" />
     </fragment>
 </navigation>

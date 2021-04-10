@@ -54,12 +54,7 @@ class MedicinalListFragment : Fragment() {
             if (medicinal != null) {
                 this.findNavController().navigate(
                     MedicinalListFragmentDirections.actionMedicinalListFragmentToEditMedicinalFragment(
-                        medicinal.id,
-                        medicinal.name,
-                        medicinal.dosage,
-                        medicinal.formOfIssue,
-                        medicinal.comment,
-                        medicinal.amount
+                        medicinal.id
                     )
                 )
                 viewModel.doneNavigating()

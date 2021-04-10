@@ -7,12 +7,12 @@ import com.example.medicinalbox.database.MedicinalDatabaseDao
 
 @Suppress("UNCHECKED_CAST")
 class EditMedicinalViewModelFactory(
-    private val dao: MedicinalDatabaseDao,
-    private val application: Application
+    private val medicinalId: Long,
+    val dao: MedicinalDatabaseDao
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(EditMedicinalViewModel::class.java)) {
-            return EditMedicinalViewModel(dao, application) as T
+            return EditMedicinalViewModel(medicinalId, dao) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

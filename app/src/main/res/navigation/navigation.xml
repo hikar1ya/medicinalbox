@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/medicinalListFragment">
+
+    <fragment
+        android:id="@+id/medicinalListFragment"
+        android:name="com.example.medicinalbox.medicinallist.MedicinalListFragment"
+        android:label="MedicinalList"
+        tools:layout="@layout/medicinal_list_fragment">
+        <action
+            android:id="@+id/action_medicinalListFragment_to_addMedicinalFragment"
+            app:destination="@id/addMedicinalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMedicinalFragment"
+        android:name="com.example.medicinalbox.addmedicinal.AddMedicinalFragment"
+        android:label="AddMedicinalFragment"
+        tools:layout="@layout/add_medicinal_fragment" />
+    <fragment
+        android:id="@+id/editMedicinalFragment"
+        android:name="com.example.medicinalbox.editmedicinal.EditMedicinalFragment"
+        android:label="EditMedicinalFragment"
+        tools:layout="@layout/edit_medicinal_fragment">
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="dosage"
+            app:argType="string" />
+        <argument
+            android:name="form_of_issue"
+            app:argType="string" />
+        <argument
+            android:name="comment"
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            app:argType="integer" />
+    </fragment>
+</navigation>

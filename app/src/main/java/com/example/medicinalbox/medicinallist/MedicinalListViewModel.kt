@@ -33,7 +33,7 @@ class MedicinalListViewModel(val dao: MedicinalDatabaseDao,
     fun deleteMedicinal(medicinal : Medicinal){
         uiScope.launch {
             withContext(Dispatchers.IO) {
-                dao.deleteMedicinal(medicinal.id)
+                dao.deleteMedicinal(medicinal)
             }
         }
     }

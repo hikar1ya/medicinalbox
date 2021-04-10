@@ -66,7 +66,6 @@ class MedicinalListFragment : Fragment() {
             }
         })
 
-//
 //        binding.button.setOnClickListener {
 //            this.findNavController().navigate(
 //                MedicinalListFragmentDirections.actionMedicinalListFragmentToGroupFragment()

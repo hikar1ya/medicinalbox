@@ -17,15 +17,15 @@ class EditMedicinalViewModel(val dao: MedicinalDatabaseDao,
     fun editMedicinal(id: Long, name: String, dosage: String, form_of_issue: String, amount: Int, comment: String) {
         uiScope.launch {
             withContext(Dispatchers.IO) {
-                val newMedicinal = dao.getMedicinalById(id)
+                val medicinal = dao.getMedicinalById(id)
 
-                if (newMedicinal != null) {
-                    newMedicinal.name = name
-                    newMedicinal.dosage = dosage
-                    newMedicinal.formOfIssue = form_of_issue
-                    newMedicinal.amount = amount
-                    newMedicinal.comment = comment
-                    updateMedicinalDatabase(newMedicinal)
+                if (medicinal != null) {
+                    medicinal.name = name
+                    medicinal.dosage = dosage
+                    medicinal.formOfIssue = form_of_issue
+                    medicinal.amount = amount
+                    medicinal.comment = comment
+                    updateMedicinalDatabase(medicinal)
                 }
             }
         }

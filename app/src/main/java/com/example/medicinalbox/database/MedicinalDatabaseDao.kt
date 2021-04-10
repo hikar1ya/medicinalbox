@@ -1,10 +1,7 @@
 package com.example.medicinalbox.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface MedicinalDatabaseDao {
@@ -15,14 +12,17 @@ interface MedicinalDatabaseDao {
     @Update
     fun updateMedicinal(medicinal : Medicinal)
 
+    @Delete
+    fun deleteMedicinal(medicinal: Medicinal)
+
     @Insert
     fun insertGroup(group: Group)
 
     @Update
     fun updateGroup(group: Group)
 
-    @Query("DELETE FROM group_table WHERE id = :key")
-    fun deleteGroup(key: Long)
+    @Delete
+    fun deleteGroup(group: Group)
 
     @Query("SELECT * FROM medicinal_table WHERE id = :key")
     fun getMedicinalById(key: Long): Medicinal?
@@ -38,9 +38,6 @@ interface MedicinalDatabaseDao {
 
     /*@Query("SELECT name FROM group_table WHERE id = :key LIMIT 1")
     fun getGroupById(key: Long)*/
-
-    @Query("DELETE FROM medicinal_table WHERE id = :key")
-    fun deleteMedicinal(key: Long)
 
     @Query("SELECT id FROM group_table ORDER BY id DESC LIMIT 1")
     fun getLastGroup(): Long

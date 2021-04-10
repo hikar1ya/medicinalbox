@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/medicinalListFragment"
         android:name="com.example.medicinalbox.medicinallist.MedicinalListFragment"
-        android:label="MedicinalList"
+        android:label="@string/medicinal_list"
         tools:layout="@layout/medicinal_list_fragment">
         <action
             android:id="@+id/action_medicinalListFragment_to_addMedicinalFragment"
@@ -20,12 +20,12 @@
     <fragment
         android:id="@+id/addMedicinalFragment"
         android:name="com.example.medicinalbox.addmedicinal.AddMedicinalFragment"
-        android:label="AddMedicinalFragment"
+        android:label="@string/add_medicinal"
         tools:layout="@layout/add_medicinal_fragment" />
     <fragment
         android:id="@+id/editMedicinalFragment"
         android:name="com.example.medicinalbox.editmedicinal.EditMedicinalFragment"
-        android:label="EditMedicinalFragment"
+        android:label="@string/edit_medicinal"
         tools:layout="@layout/edit_medicinal_fragment">
         <argument
             android:name="id"

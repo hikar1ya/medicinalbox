@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Мобильная аптечка</string>
+    <string name="name">Наименование</string>
+    <string name="edit_medicinal">Редактировать медикаменты</string>
+    <string name="add_medicinal">Добавить медикаменты</string>
+    <string name="medicinal_list">Список медикаментов</string>
+</resources>

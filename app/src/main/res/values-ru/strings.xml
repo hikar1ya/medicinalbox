@@ -5,4 +5,11 @@
     <string name="edit_medicinal">Редактировать медикаменты</string>
     <string name="add_medicinal">Добавить медикаменты</string>
     <string name="medicinal_list">Список медикаментов</string>
+    <string name="custom_list">Произвольный списко</string>
+    <string name="save">Сохранить</string>
+    <string name="edit">Редактировать</string>
+    <string name="delete">Удалить</string>
+    <string name="add_new_custom_list">Добавить новый произвольный список</string>
+    <string name="custom_list_info">Информация о списке</string>
+    <string name="edit_custom_list">Редактирование списка</string>
 </resources>

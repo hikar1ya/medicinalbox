@@ -1,5 +1,6 @@
 package com.example.medicinalbox.medicinallist
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -29,6 +30,7 @@ class MedicinalListViewModel(
         }
     }
 
+    @SuppressLint("NullSafeMutableLiveData")
     fun doneNavigating() {
         _navigateToEdit.value = null
     }

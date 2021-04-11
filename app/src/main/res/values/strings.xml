@@ -8,4 +8,7 @@
     <string name="save">Save</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="add_new_custom_list">Add new custom list</string>
+    <string name="custom_list_info">Custom list info</string>
+    <string name="edit_custom_list">Edit custom list</string>
 </resources>

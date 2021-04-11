@@ -46,13 +46,13 @@
     <fragment
         android:id="@+id/addCustomListFragment"
         android:name="com.example.medicinalbox.addcustomlist.AddCustomListFragment"
-        android:label="AddCustomListFragment"
+        android:label="@string/add_new_custom_list"
         tools:layout="@layout/add_custom_list_fragment">
     </fragment>
     <fragment
         android:id="@+id/customListInfoFragment"
         android:name="com.example.medicinalbox.customlistinfo.CustomListInfoFragment"
-        android:label="CustomListInfoFragment"
+        android:label="@string/custom_list_info"
         tools:layout="@layout/custom_list_info_fragment">
         <argument
             android:name="id"
@@ -64,7 +64,7 @@
     <fragment
         android:id="@+id/editCustomListFragment"
         android:name="com.example.medicinalbox.editcustomlist.EditCustomListFragment"
-        android:label="EditCustomListFragment"
+        android:label="@string/edit_custom_list"
         tools:layout="@layout/edit_custom_list_fragment">
         <argument
             android:name="id"

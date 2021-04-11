@@ -20,6 +20,8 @@ class MedicinalListViewModel(
 
     lateinit var filteredElements: List<Medicinal>
 
+    var search: String = ""
+
     private val _navigateToEdit = MutableLiveData<Medicinal>()
     val navigateToEdit: LiveData<Medicinal>
         get() = _navigateToEdit
@@ -44,6 +46,7 @@ class MedicinalListViewModel(
     }
 
     fun filter(charText: String): List<Medicinal> {
+        search = charText
         return filteredElements.filter { medicinal ->
             medicinal.name.toLowerCase().contains(charText.toLowerCase())
         }

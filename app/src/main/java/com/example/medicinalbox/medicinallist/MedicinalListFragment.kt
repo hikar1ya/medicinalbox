@@ -40,8 +40,8 @@ class MedicinalListFragment : Fragment() {
 
         viewModel.elements.observe(viewLifecycleOwner, { elementsList ->
             if (elementsList != null) {
-                adapter.data = elementsList
                 viewModel.filteredElements = elementsList
+                adapter.data = viewModel.filter(viewModel.search)
             }
         })
 
@@ -51,7 +51,7 @@ class MedicinalListFragment : Fragment() {
             )
         }
 
-        viewModel.navigateToEdit.observe(viewLifecycleOwner, Observer { medicinal ->
+        viewModel.navigateToEdit.observe(viewLifecycleOwner, { medicinal ->
             if (medicinal != null) {
                 this.findNavController().navigate(
                     MedicinalListFragmentDirections.actionMedicinalListFragmentToEditMedicinalFragment(

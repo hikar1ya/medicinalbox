@@ -30,9 +30,9 @@ class AddCustomListAdapter() : RecyclerView.Adapter<ElementViewHolder>() {
         holder.elName.text = item.name
         holder.checkBox.setOnClickListener {
             if (holder.checkBox.isChecked) {
-                viewModel.deleteMedicinalFromList(item)
-            } else {
                 viewModel.addMedicinalToList(item)
+            } else {
+                viewModel.deleteMedicinalFromList(item)
             }
         }
 

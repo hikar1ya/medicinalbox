@@ -25,7 +25,7 @@ class EditCustomListViewModel(private val medicinalId: Long,
                 dao.insertCustomList(customList)
                 val id: Long = dao.getLastCustomList()
                 for (medicinal in medicinalList) {
-                    dao.addMedicinalToCustomList(medicinal.id, id)
+                    //dao.addMedicinalToCustomList(medicinal.id, id)
                 }
             }
         }

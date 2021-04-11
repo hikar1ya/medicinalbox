@@ -3,6 +3,7 @@ package com.example.medicinalbox.addcustomlist
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.example.medicinalbox.database.CustomList
+import com.example.medicinalbox.database.CustomListMedicinalConnection
 import com.example.medicinalbox.database.Medicinal
 import com.example.medicinalbox.database.MedicinalDatabaseDao
 import kotlinx.coroutines.*
@@ -25,9 +26,12 @@ class AddCustomListViewModel(
                 val customList = CustomList()
                 customList.name = name
                 dao.insertCustomList(customList)
-                val id: Long = dao.getLastCustomList()
+                val customListId = dao.getLastCustomList()
                 for (medicinal in medicinalList) {
-                    dao.addMedicinalToCustomList(medicinal.id, id)
+                    val connection = CustomListMedicinalConnection()
+                    connection.customListId = customListId
+                    connection.medicinalId = medicinal.id
+                    dao.insertConnection(connection)
                 }
             }
         }

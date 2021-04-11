@@ -22,7 +22,6 @@ class CustomListViewModel(val dao: MedicinalDatabaseDao,
     val navigateToCustomListInfo: LiveData<CustomList>
         get() = _navigateToCustomListInfo
 
-
 //    fun editGroup(name: String) {
 //        uiScope.launch {
 //            val customList = CustomList()

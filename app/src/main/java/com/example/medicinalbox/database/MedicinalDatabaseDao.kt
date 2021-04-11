@@ -24,6 +24,9 @@ interface MedicinalDatabaseDao {
     @Delete
     fun deleteCustomList(group: CustomList)
 
+    @Insert
+    fun insertConnection(connection: CustomListMedicinalConnection)
+
     @Query("SELECT * FROM medicinal_table WHERE id = :key")
     fun getMedicinalById(key: Long): Medicinal?
 
@@ -41,9 +44,6 @@ interface MedicinalDatabaseDao {
 
     @Query("SELECT id FROM custom_list_table ORDER BY id DESC LIMIT 1")
     fun getLastCustomList(): Long
-
-    @Query("INSERT INTO custom_list_medicinal_connection_table (custom_list_id, medicinal_id) VALUES (:id, :medicinal_id)")
-    fun addMedicinalToCustomList(medicinal_id: Long, id: Long)
 
     @Query("DELETE FROM custom_list_table WHERE id = :key")
     fun deleteCustomListById(key: Long)

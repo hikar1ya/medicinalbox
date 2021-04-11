@@ -42,9 +42,10 @@ class AddCustomListFragment : Fragment() {
         binding.medicinalList.adapter = adapter
         adapter.viewModel = viewModel
 
-        viewModel.elements.observe(viewLifecycleOwner, Observer { elementsList ->
+        viewModel.elements.observe(viewLifecycleOwner, { elementsList ->
             if (elementsList != null) {
                 adapter.data = elementsList
+                adapter.dataChecked = viewModel.medicinalList
             }
         })
 

@@ -16,7 +16,7 @@ class AddCustomListViewModel(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val medicinalList: ArrayList<Medicinal> = arrayListOf()
+    val medicinalList: ArrayList<Medicinal> = arrayListOf()
 
     var elements = dao.getMedicinals()
 

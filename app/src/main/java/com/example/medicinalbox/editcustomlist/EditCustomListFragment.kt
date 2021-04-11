@@ -1,4 +1,4 @@
-package com.example.medicinalbox.addcustomlist
+package com.example.medicinalbox.editcustomlist
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,37 +8,38 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.medicinalbox.R
+import com.example.medicinalbox.addcustomlist.AddCustomListViewModel
 import com.example.medicinalbox.database.MedicinalDatabase
-import com.example.medicinalbox.databinding.AddCustomListFragmentBinding
+import com.example.medicinalbox.databinding.EditCustomListFragmentBinding
 
-class AddCustomListFragment : Fragment() {
+class EditCustomListFragment : Fragment() {
 
-    private lateinit var viewModel: AddCustomListViewModel
+    private lateinit var viewModel: EditCustomListViewModel
 
-    private lateinit var binding: AddCustomListFragmentBinding
+    private lateinit var binding: EditCustomListFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.add_custom_list_fragment,
+            R.layout.edit_custom_list_fragment,
             container,
             false
         )
 
+        val customListId = EditCustomListFragmentArgs.fromBundle(requireArguments()).id
+
         val application = requireNotNull(this.activity).application
         val dao = MedicinalDatabase.getInstance(application).getMedicinalDatabaseDao()
-        val viewModelFactory = AddCustomListViewModelFactory(dao, application)
+        val viewModelFactory = EditCustomListViewModelFactory(customListId, dao)
         viewModel = ViewModelProvider(this, viewModelFactory)
-            .get(AddCustomListViewModel::class.java)
+            .get(EditCustomListViewModel::class.java)
 
-        val adapter = AddCustomListAdapter()
+        val adapter = EditCustomListAdapter()
         binding.medicinalList.adapter = adapter
         adapter.viewModel = viewModel
 
@@ -55,4 +56,5 @@ class AddCustomListFragment : Fragment() {
 
         return binding.root
     }
+
 }

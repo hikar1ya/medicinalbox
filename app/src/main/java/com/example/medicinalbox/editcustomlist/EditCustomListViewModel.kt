@@ -1,16 +1,14 @@
-package com.example.medicinalbox.addcustomlist
+package com.example.medicinalbox.editcustomlist
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import com.example.medicinalbox.database.CustomList
 import com.example.medicinalbox.database.Medicinal
 import com.example.medicinalbox.database.MedicinalDatabaseDao
 import kotlinx.coroutines.*
 
-class AddCustomListViewModel(
-    val dao: MedicinalDatabaseDao,
-    application: Application
-) : AndroidViewModel(application) {
+class EditCustomListViewModel(private val medicinalId: Long,
+                              val dao: MedicinalDatabaseDao
+) : ViewModel() {
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)

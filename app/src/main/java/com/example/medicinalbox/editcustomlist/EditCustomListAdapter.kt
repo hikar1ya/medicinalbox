@@ -1,4 +1,4 @@
-package com.example.medicinalbox.addcustomlist
+package com.example.medicinalbox.editcustomlist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +14,7 @@ class ElementViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val checkBox: CheckBox = itemView.findViewById(R.id.checkBox)
 }
 
-class AddCustomListAdapter() : RecyclerView.Adapter<ElementViewHolder>() {
+class EditCustomListAdapter() : RecyclerView.Adapter<ElementViewHolder>() {
     var data = listOf<Medicinal>()
         set(value) {
             field = value
@@ -23,18 +23,18 @@ class AddCustomListAdapter() : RecyclerView.Adapter<ElementViewHolder>() {
 
     override fun getItemCount() = data.size
 
-    lateinit var viewModel: AddCustomListViewModel
+    lateinit var viewModel: EditCustomListViewModel
 
     override fun onBindViewHolder(holder: ElementViewHolder, position: Int) {
         val item = data[position]
-        holder.elName.text = item.name
-        holder.checkBox.setOnClickListener {
-            if (holder.checkBox.isChecked) {
-                viewModel.deleteMedicinalFromList(item)
-            } else {
-                viewModel.addMedicinalToList(item)
-            }
-        }
+        holder.elName.text = "${item.name}"
+//        holder.checkBox.setOnClickListener {
+//            if (holder.checkBox.isChecked) {
+//                viewModel.deleteItemFromGroup(item)
+//            } else {
+//                viewModel.addItemToGroup(item)
+//            }
+//        }
 
     }
 

@@ -58,4 +58,13 @@
             android:name="id"
             app:argType="long" />
     </fragment>
+    <fragment
+        android:id="@+id/editCustomListFragment"
+        android:name="com.example.medicinalbox.editcustomlist.EditCustomListFragment"
+        android:label="EditCustomListFragment"
+        tools:layout="@layout/edit_custom_list_fragment">
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </fragment>
 </navigation>

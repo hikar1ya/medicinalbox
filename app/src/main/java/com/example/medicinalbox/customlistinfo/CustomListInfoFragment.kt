@@ -39,7 +39,7 @@ class CustomListInfoFragment : Fragment() {
             .get(CustomListInfoViewModel::class.java)
 
         val adapter = CustomListInfoAdapter()
-        binding.groupList.adapter = adapter
+        binding.medicinalList.adapter = adapter
         adapter.viewModel = viewModel
 
         viewModel.customList.observe(viewLifecycleOwner, Observer { customList ->

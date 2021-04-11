@@ -8,13 +8,16 @@ import com.example.medicinalbox.database.Medicinal
 import com.example.medicinalbox.database.MedicinalDatabaseDao
 import kotlinx.coroutines.*
 
-class MedicinalListViewModel(val dao: MedicinalDatabaseDao,
-                             application: Application
+class MedicinalListViewModel(
+    val dao: MedicinalDatabaseDao,
+    application: Application
 ) : AndroidViewModel(application) {
     private var viewModelJob = Job()
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     var elements = dao.getMedicinals()
+
+    lateinit var filteredElements: List<Medicinal>
 
     private val _navigateToEdit = MutableLiveData<Medicinal>()
     val navigateToEdit: LiveData<Medicinal>
@@ -30,7 +33,7 @@ class MedicinalListViewModel(val dao: MedicinalDatabaseDao,
         _navigateToEdit.value = null
     }
 
-    fun deleteMedicinal(medicinal : Medicinal){
+    fun deleteMedicinal(medicinal: Medicinal) {
         uiScope.launch {
             withContext(Dispatchers.IO) {
                 dao.deleteMedicinal(medicinal)
@@ -38,14 +41,8 @@ class MedicinalListViewModel(val dao: MedicinalDatabaseDao,
         }
     }
 
-    fun filter(charText: String) {
-        var charText = charText
-        charText = charText.toLowerCase()
-        if (charText.length == 0) {
-            elements = dao.getMedicinals()
-        } else {
-            elements = dao.filter(charText)
-        }
+    fun filter(charText: String): List<Medicinal> {
+        return filteredElements.filter { medicinal -> medicinal.name.contains(charText) }
     }
 
     override fun onCleared() {

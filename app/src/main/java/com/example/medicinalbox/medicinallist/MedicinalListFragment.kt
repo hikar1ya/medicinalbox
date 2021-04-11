@@ -41,6 +41,7 @@ class MedicinalListFragment : Fragment() {
         viewModel.elements.observe(viewLifecycleOwner, { elementsList ->
             if (elementsList != null) {
                 adapter.data = elementsList
+                viewModel.filteredElements = elementsList
             }
         })
 
@@ -62,13 +63,13 @@ class MedicinalListFragment : Fragment() {
         })
 
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
+            override fun onQueryTextSubmit(newText: String?): Boolean {
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
-                    viewModel.filter(newText)
+                    adapter.data = viewModel.filter(newText)
                 }
                 return true
             }

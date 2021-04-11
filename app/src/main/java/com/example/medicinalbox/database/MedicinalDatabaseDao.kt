@@ -40,7 +40,10 @@ interface MedicinalDatabaseDao {
     fun getCustomLists(): LiveData<List<CustomList>>
 
     @Query("SELECT * FROM custom_list_table WHERE id = :key LIMIT 1")
-    fun getCustomListById(key: Long): LiveData<CustomList>
+    fun getCustomListByIdLD(key: Long): LiveData<CustomList>
+
+    @Query("SELECT * FROM custom_list_table WHERE id = :key LIMIT 1")
+    fun getCustomListById(key: Long): CustomList
 
     @Query("SELECT id FROM custom_list_table ORDER BY id DESC LIMIT 1")
     fun getLastCustomList(): Long
@@ -55,6 +58,12 @@ interface MedicinalDatabaseDao {
     fun filter(search: String): LiveData<List<Medicinal>>
 
     @Query("SELECT * FROM custom_list_medicinal_connection_table JOIN medicinal_table ON custom_list_medicinal_connection_table.medicinal_id = medicinal_table.id WHERE custom_list_medicinal_connection_table.custom_list_id = :key")
-    fun getMedicinalsByCustomListId(key: Long): LiveData<List<Medicinal>>
+    fun getMedicinalsByCustomListIdLD(key: Long): LiveData<List<Medicinal>>
+
+    @Query("SELECT * FROM custom_list_medicinal_connection_table JOIN medicinal_table ON custom_list_medicinal_connection_table.medicinal_id = medicinal_table.id WHERE custom_list_medicinal_connection_table.custom_list_id = :key")
+    fun getMedicinalsByCustomListId(key: Long) : List<Medicinal>
+
+    @Query("DELETE FROM custom_list_medicinal_connection_table WHERE custom_list_id = :customListId and medicinal_id = :medicinalId")
+    fun deleteConnectionByCustomListAndMedicinal(customListId: Long, medicinalId: Long)
 
 }

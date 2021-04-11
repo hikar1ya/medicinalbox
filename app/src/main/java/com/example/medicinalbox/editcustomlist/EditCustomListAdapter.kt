@@ -21,6 +21,12 @@ class EditCustomListAdapter() : RecyclerView.Adapter<ElementViewHolder>() {
             notifyDataSetChanged()
         }
 
+    var dataChecked = listOf<Medicinal>()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
     override fun getItemCount() = data.size
 
     lateinit var viewModel: EditCustomListViewModel
@@ -28,13 +34,16 @@ class EditCustomListAdapter() : RecyclerView.Adapter<ElementViewHolder>() {
     override fun onBindViewHolder(holder: ElementViewHolder, position: Int) {
         val item = data[position]
         holder.elName.text = "${item.name}"
-//        holder.checkBox.setOnClickListener {
-//            if (holder.checkBox.isChecked) {
-//                viewModel.deleteItemFromGroup(item)
-//            } else {
-//                viewModel.addItemToGroup(item)
-//            }
-//        }
+        if (dataChecked.contains(item)) {
+            holder.checkBox.isChecked = true
+        }
+        holder.checkBox.setOnClickListener {
+            if (holder.checkBox.isChecked) {
+                viewModel.addMedicinalToList(item)
+            } else {
+                viewModel.deleteMedicinalFromList(item)
+            }
+        }
 
     }
 

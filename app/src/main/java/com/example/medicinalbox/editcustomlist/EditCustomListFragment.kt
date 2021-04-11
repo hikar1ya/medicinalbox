@@ -7,10 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.medicinalbox.R
-import com.example.medicinalbox.addcustomlist.AddCustomListViewModel
+import com.example.medicinalbox.database.Medicinal
 import com.example.medicinalbox.database.MedicinalDatabase
 import com.example.medicinalbox.databinding.EditCustomListFragmentBinding
 
@@ -43,9 +42,24 @@ class EditCustomListFragment : Fragment() {
         binding.medicinalList.adapter = adapter
         adapter.viewModel = viewModel
 
-        viewModel.elements.observe(viewLifecycleOwner, Observer { elementsList ->
+        viewModel.customList.observe(viewLifecycleOwner, { customList ->
+            if (customList != null) {
+                binding.nameOfList.setText(customList.name)
+            }
+        })
+
+        // загружаем медикаменты
+        viewModel.elements.observe(viewLifecycleOwner, { elementsList ->
             if (elementsList != null) {
                 adapter.data = elementsList
+            }
+        })
+
+        // отмечаем выбранные медикаменты
+        viewModel.medicinalList.observe(viewLifecycleOwner, { medicinalList ->
+            if (medicinalList != null) {
+                adapter.dataChecked = medicinalList
+                viewModel.newMedicinalList = medicinalList as ArrayList<Medicinal>
             }
         })
 

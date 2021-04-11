@@ -6,4 +6,6 @@
     <string name="medicinal_list">Medicinal List</string>
     <string name="custom_list">Custom List</string>
     <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>

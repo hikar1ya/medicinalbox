@@ -22,29 +22,6 @@ class CustomListViewModel(val dao: MedicinalDatabaseDao,
     val navigateToCustomListInfo: LiveData<CustomList>
         get() = _navigateToCustomListInfo
 
-//    fun editGroup(name: String) {
-//        uiScope.launch {
-//            val customList = CustomList()
-//            customList.name = name
-//            updateGroup(customList)
-//        }
-//    }
-//
-//    private suspend fun updateGroup(customList: CustomList) {
-//        withContext(Dispatchers.IO) {
-//            dao.updateCustomList(customList)
-//        }
-//    }
-//
-//    fun deleteCustomList(customList : CustomList){
-//        uiScope.launch {
-//            withContext(Dispatchers.IO) {
-//                dao.deleteCustomList(customList)
-//                dao.deleteConnectionsByCustomListId(customList.id)
-//            }
-//        }
-//    }
-//
     fun onCustomListClicked(customList: CustomList) {
         uiScope.launch {
             _navigateToCustomListInfo.value = customList
@@ -54,11 +31,5 @@ class CustomListViewModel(val dao: MedicinalDatabaseDao,
     fun doneNavigating() {
         _navigateToCustomListInfo.value = null
     }
-//
-//    private suspend fun insertElement(element: Medicinal) {
-//        withContext(Dispatchers.IO) {
-//            dao.insertMedicinal(element)
-//        }
-//    }
 
 }

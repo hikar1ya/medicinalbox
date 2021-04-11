@@ -2,12 +2,11 @@ package com.example.medicinalbox.customlistinfo
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.medicinalbox.R
 import com.example.medicinalbox.database.MedicinalDatabase
 import com.example.medicinalbox.databinding.CustomListInfoFragmentBinding
@@ -54,7 +53,38 @@ class CustomListInfoFragment : Fragment() {
             }
         })
 
+        viewModel.navigateToEdit.observe(viewLifecycleOwner, Observer { shouldNavigate ->
+            if (shouldNavigate) {
+                this.findNavController().navigate(
+                    CustomListInfoFragmentDirections.actionCustomListInfoFragmentToEditCustomListFragment(
+                        args.id
+                    )
+                )
+                viewModel.doneNavigating()
+            }
+        })
+
+        viewModel.navigateUp.observe(viewLifecycleOwner, Observer { shouldNavigate ->
+            if (shouldNavigate) {
+                this.findNavController().navigateUp()
+            }
+        })
+
+        setHasOptionsMenu(true)
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.custom_list_info_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.edit -> viewModel.onEdit()
+            R.id.delete -> viewModel.onDelete()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

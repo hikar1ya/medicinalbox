@@ -16,13 +16,13 @@ interface MedicinalDatabaseDao {
     fun deleteMedicinal(medicinal: Medicinal)
 
     @Insert
-    fun insertCustomList(group: CustomList)
+    fun insertCustomList(customList: CustomList)
 
     @Update
-    fun updateCustomList(group: CustomList)
+    fun updateCustomList(customList: CustomList)
 
     @Delete
-    fun deleteCustomList(group: CustomList)
+    fun deleteCustomList(customList: CustomList)
 
     @Insert
     fun insertConnection(connection: CustomListMedicinalConnection)

@@ -57,6 +57,9 @@
         <argument
             android:name="id"
             app:argType="long" />
+        <action
+            android:id="@+id/action_customListInfoFragment_to_editCustomListFragment"
+            app:destination="@id/editCustomListFragment" />
     </fragment>
     <fragment
         android:id="@+id/editCustomListFragment"

@@ -42,7 +42,9 @@ class MedicinalListViewModel(
     }
 
     fun filter(charText: String): List<Medicinal> {
-        return filteredElements.filter { medicinal -> medicinal.name.contains(charText) }
+        return filteredElements.filter { medicinal ->
+            medicinal.name.toLowerCase().contains(charText.toLowerCase())
+        }
     }
 
     override fun onCleared() {
